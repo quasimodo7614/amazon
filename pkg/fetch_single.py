@@ -1,7 +1,5 @@
 import time
 
-import signin
-
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -58,7 +56,7 @@ def fetch_amazon_product_details(driver, url, max_retries=3):
                 # 找到所有图片的元素
                 images = driver.find_elements(By.CSS_SELECTOR, "ul.a-button-list img")
 
-                # 遍历并点击每个图片
+                # 遍历并点击每个图片, 不点击不会加载，只能获取到一张图片
                 for image in images:
                     try:
                         # 通过 ActionChains 移动到图片并点击
