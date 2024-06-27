@@ -73,16 +73,17 @@ def fetch_amazon_product_details(driver, url, max_retries=3):
                 img_elements = ul_element.find_elements(By.TAG_NAME, 'img')
                 imageList = [img.get_attribute('src') for img in img_elements]
 
-            except :
+            except:
                 print("获取 image 失败")
             # print("imageList is: ", imageList)
             # time.sleep(5000)
 
             # 返回结果
             return {
+                "link": url,
                 "title": title,
                 "price": price,
-                "fiveitem":fiveitem,
+                "fiveitem": fiveitem,
                 "prodDetails": prodDetails,
                 "productDescription": productDescription,
                 "image": imageList
@@ -95,20 +96,19 @@ def fetch_amazon_product_details(driver, url, max_retries=3):
                 print("多次尝试后仍然失败，退出程序。")
                 return None
 
-
-# 示例数组
-urls = [
-     "https://www.amazon.com/dp/B08PZJN7BD?aref=N1GKbwWP6d&aaxitk=5f4a4fd0be1fd3eab1809bed4201e3ed&language=en_US&pd_rd_plhdr=t&smid=ATVPDKIKX0DER&ref=dacx_dp_591637243630818197_582668263125716884"
-    # 添加更多URL
-]
-
-driver = webdriver.Chrome()
-signin.signin(driver)
+# # 示例数组
+# urls = [
+#      "https://www.amazon.com/dp/B08PZJN7BD?aref=N1GKbwWP6d&aaxitk=5f4a4fd0be1fd3eab1809bed4201e3ed&language=en_US&pd_rd_plhdr=t&smid=ATVPDKIKX0DER&ref=dacx_dp_591637243630818197_582668263125716884"
+#     # 添加更多URL
+# ]
 #
-# 遍历数组并调用函数
-for url in urls:
-    product_details = fetch_amazon_product_details(driver, url, max_retries=2)
-    if product_details:
-        print(product_details)
-    else:
-        print(f"无法获取 {url} 的产品详情")
+# driver = webdriver.Chrome()
+# signin.signin(driver)
+# #
+# # 遍历数组并调用函数
+# for url in urls:
+#     product_details = fetch_amazon_product_details(driver, url, max_retries=2)
+#     if product_details:
+#         print(product_details)
+#     else:
+#         print(f"无法获取 {url} 的产品详情")
