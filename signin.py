@@ -52,8 +52,4 @@ def signin(driver):
         print(f"An error occurred when click: {e}")
 
 
-# 设置ChromeDriver路径
-driver = webdriver.Chrome()
-signin(driver)
-time.sleep(15)
-driver.refresh()
+

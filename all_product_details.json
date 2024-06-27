@@ -1,5 +1,55 @@
-[
-    null,
-    null,
-    null
-]
+<script type="text/javascript">
+P.when('A').register("ImageBlockATF", function(A){
+var data = {
+'enableS2WithoutS1': false,
+'notShowVideoCount': false,
+'colorImages': { 'initial': [{"hiRes":"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SL1024_.jpg","thumb":"https://m.media-amazon.com/images/I/31Sj+flx0qS._AC_US100_.jpg","large":"https://m.media-amazon.com/images/I/31Sj+flx0qS._AC_.jpg","main":{"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SY355_.jpg":[355,355],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SY450_.jpg":[450,450],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SX425_.jpg":[425,425],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SX466_.jpg":[466,466],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SX522_.jpg":[522,522],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SX569_.jpg":[569,569],"https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SX679_.jpg":[679,679]},"variant":"MAIN","lowRes":null,"shoppableScene":null},{"hiRes":"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SL1024_.jpg","thumb":"https://m.media-amazon.com/images/I/51LdNHepDrL._AC_US100_.jpg","large":"https://m.media-amazon.com/images/I/51LdNHepDrL._AC_.jpg","main":{"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SY355_.jpg":[355,355],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SY450_.jpg":[450,450],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SX425_.jpg":[425,425],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SX466_.jpg":[466,466],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SX522_.jpg":[522,522],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SX569_.jpg":[569,569],"https://m.media-amazon.com/images/I/61fQ5EUoucL._AC_SX679_.jpg":[679,679]},"variant":"PT01","lowRes":null,"shoppableScene":null},{"hiRes":"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SL1024_.jpg","thumb":"https://m.media-amazon.com/images/I/31H6QypgbuL._AC_US100_.jpg","large":"https://m.media-amazon.com/images/I/31H6QypgbuL._AC_.jpg","main":{"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SY355_.jpg":[355,355],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SY450_.jpg":[450,450],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SX425_.jpg":[425,425],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SX466_.jpg":[466,466],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SX522_.jpg":[522,522],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SX569_.jpg":[569,569],"https://m.media-amazon.com/images/I/414hvDlDTfL._AC_SX679_.jpg":[679,679]},"variant":"PT02","lowRes":null,"shoppableScene":null},{"hiRes":"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SL1024_.jpg","thumb":"https://m.media-amazon.com/images/I/41fogpBvllL._AC_US100_.jpg","large":"https://m.media-amazon.com/images/I/41fogpBvllL._AC_.jpg","main":{"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SY355_.jpg":[355,355],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SY450_.jpg":[450,450],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SX425_.jpg":[425,425],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SX466_.jpg":[466,466],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SX522_.jpg":[522,522],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SX569_.jpg":[569,569],"https://m.media-amazon.com/images/I/51l0M9lQHdL._AC_SX679_.jpg":[679,679]},"variant":"PT03","lowRes":null,"shoppableScene":null},{"hiRes":"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SL1024_.jpg","thumb":"https://m.media-amazon.com/images/I/41pJEQlM85L._AC_US100_.jpg","large":"https://m.media-amazon.com/images/I/41pJEQlM85L._AC_.jpg","main":{"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SY355_.jpg":[355,355],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SY450_.jpg":[450,450],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SX425_.jpg":[425,425],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SX466_.jpg":[466,466],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SX522_.jpg":[522,522],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SX569_.jpg":[569,569],"https://m.media-amazon.com/images/I/51U3ZiWHWbL._AC_SX679_.jpg":[679,679]},"variant":"PT04","lowRes":null,"shoppableScene":null}]},
+'colorToAsin': {'initial': {}},
+'holderRatio': 1.3,
+'holderMaxHeight': 700,
+'heroImage': {'initial': []},
+'heroVideo': {'initial': []},
+'spin360ColorData': {'initial': {}},
+'spin360ColorEnabled': {'initial': 0},
+'spin360ConfigEnabled': true,
+'spin360LazyLoadEnabled': false,
+'showroomEnabled': false,
+'asinShowroomEnabled' : false,
+'showroomViewModel': {'initial': {}},
+'dimensionIngressEnabled' : false,
+'dimensionIngressThumbURL' : {'initial': 'https://m.media-amazon.com/images/G/01/HIT/ImageBlockDimension/dimensions_sm_IGV2._CB613665156_.png'},
+'dimensionIngressAtfData' : {'initial': {"thumbnailCaption":"尺寸","heroImageCaption":"点击图像可以展开视图","immersiveViewTabCaption":"尺寸","immersiveViewDimensionSuppressionEnabled":false,"dimensionVariantList":["PT03","PT04"]}},
+'playVideoInImmersiveView':true,
+'useTabbedImmersiveView':true,
+'totalVideoCount':'0',
+'videoIngressATFSlateThumbURL':'',
+'mediaTypeCount':'0',
+'atfEnhancedHoverOverlay' : true,
+'winningAsin': '',
+'weblabs' : {},
+'aibExp3Layout' : 0,
+'aibRuleName' : 'frank-powered',
+'acEnabled' : true,
+'dp60VideoPosition': 0,
+'dp60VariantList': '',
+'dp60VideoThumb': '',
+'dp60MainImage': 'https://m.media-amazon.com/images/I/41Yya7NSi+S._AC_SY355_.jpg',
+'imageBlockRenderingStartTime': Date.now(),
+'additionalNumberOfImageAlts': 0,
+'shoppableSceneWeblabEnabled': false,
+'unrolledImageBlockTreatment': 0,
+'additionalNumberOfImageAlts': 0,
+'inlineZoomExperimentTreatment': 0,
+'interactiveCallJSPEnabled': false,
+'unrolledImageBlockLazyLoadEnabled': false,
+'collapsibleThumbnails': false,
+'dp60InLastPositionUnrolledImageBlock': false,
+'tableOfContentsIconImage': 'https://m.media-amazon.com/images/G/01/books-detail-page-table-of-contents/blackback/ToC.png',
+
+'airyConfig' :A.$.parseJSON('{"jsUrl":"https://m.media-amazon.com/images/G/01/vap/video/airy2/prod/2.0.1460.0/js/airy.skin._CB485981857_.js","cssUrl":"https://m.media-amazon.com/images/G/01/vap/video/airy2/prod/2.0.1460.0/css/beacon._CB485971591_.css","swfUrl":"https://m.media-amazon.com/images/G/01/vap/video/airy2/prod/2.0.1460.0/flash/AiryBasicRenderer._CB485925577_.swf","foresterMetadataParams":{"marketplaceId":"ATVPDKIKX0DER","method":"Furniture.ImageBlock","requestId":"NWZ8JSAM8P1QBK5HNK38","session":"146-9461112-7865026","client":"Dpx"}}')
+
+};
+A.trigger('P.AboveTheFold'); // trigger ATF event.
+return data;
+});
+</script>

@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 
 import single
 
-product = "table"
-encoded_product = urllib.parse.quote(product)
+# product = "table"
+# encoded_product = urllib.parse.quote(product)
 
 url = 'https://www.amazon.com/s?k=' + encoded_product
 

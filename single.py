@@ -1,13 +1,16 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 import time
 
-from setdeliver import test_setdeliver
+import signin
+
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 
-def fetch_amazon_product_details(url, max_retries=3):
+def fetch_amazon_product_details(driver, url, max_retries=3):
     # 设置Chrome选项
     chrome_options = Options()
     chrome_options.add_argument('--headless')  # 无头模式，不打开浏览器窗口
@@ -15,52 +18,74 @@ def fetch_amazon_product_details(url, max_retries=3):
     chrome_options.add_argument('--no-sandbox')
 
     # 设置ChromeDriver路径
-    driver = webdriver.Chrome()
 
     for attempt in range(max_retries):
         try:
             # 初始化WebDriver
             driver.get(url)
-            time.sleep(5)  # 等待页面加载
+            time.sleep(2)
+            driver.refresh()
 
-            # 获取标题
             title = driver.find_element(By.ID, 'productTitle').text.strip()
+            # print("title is: ", title)
 
             price = driver.find_element(By.CLASS_NAME, 'a-price-whole').text.strip()
-            # price = driver.find_element(By.XPATH, '//*[@id="corePriceDisplay_desktop_feature_div"]/div[1]/span[2]/span[2]/span[2]').text.strip()
+            # print("price is: ", price)
 
-            # # 获取描述
-            # try:
-            #     # description = driver.find_element(By.XPATH,'//*[@id="bookDescription_feature_div"]/div/div[1]/span').text.strip()
-            #     description = driver.find_element(By.XPATH,'//*[@id="feature-bullets"]/ul').text.strip()
-            # except:
-            #     description = driver.find_element(By.CSS_SELECTOR,'//*[@id="feature-bullets"]/ul').text.strip()
-            #     # //*[@id="aplus"]/h2
-            #     # //*[@id="productDescription_feature_div"]/h2
+            # fiveitem
+            try:
+                fiveitem = driver.find_element(By.XPATH, '//*[@id="feature-bullets"]/ul').text.strip()
+            except:
+                fiveitem = ""
+            # print("fiveitem is: ", fiveitem)
 
-            # 获取评分
-            # rating = driver.find_element(By.XPATH, '//*[@id="acrPopover"]/span[1]/a/span').text.strip()
-            #
-            # image_element = driver.find_element(By.ID, "imgTagWrapperId").find_element(By.TAG_NAME, "img")
-            # image_url = image_element.get_attribute("src")
+            try:
+                prodDetails = driver.find_element(By.XPATH, '//*[@id="prodDetails"]/div').text.strip()
+            except:
+                prodDetails = ""
+            # print("prodDetails is: ", prodDetails)
 
-            # 打印结果
-            print("标题:", title)
-            print("价格:", price)
-            # print("描述:", description)
-            # print("评分:", rating)
-            # print("图片:", image_url)
+            try:
+                productDescription = driver.find_element(By.ID, 'productDescription').text.strip()
+                # //*[@id="productDescription"]
+            except:
+                productDescription = ""
+            # print("productDescription is: ", productDescription)
 
-            # 关闭浏览器
-            # driver.quit()
+            imageList = []
+            try:
+
+                # 找到所有图片的元素
+                images = driver.find_elements(By.CSS_SELECTOR, "ul.a-button-list img")
+
+                # 遍历并点击每个图片
+                for image in images:
+                    try:
+                        # 通过 ActionChains 移动到图片并点击
+                        actions = ActionChains(driver)
+                        actions.move_to_element(image).click().perform()
+                    except:
+                        # 出错不管
+                        print("click image failed")
+
+                # 开始获取图片列表
+                ul_element = driver.find_element(By.XPATH, '//*[@id="main-image-container"]/ul')
+                img_elements = ul_element.find_elements(By.TAG_NAME, 'img')
+                imageList = [img.get_attribute('src') for img in img_elements]
+
+            except :
+                print("获取 image 失败")
+            # print("imageList is: ", imageList)
+            # time.sleep(5000)
 
             # 返回结果
             return {
                 "title": title,
                 "price": price,
-                # "description": description,
-                # "rating": rating,
-                # "image": image_url
+                "fiveitem":fiveitem,
+                "prodDetails": prodDetails,
+                "productDescription": productDescription,
+                "image": imageList
             }
         except Exception as e:
             print(f"尝试 {attempt + 1} 失败: {e}")
@@ -73,18 +98,17 @@ def fetch_amazon_product_details(url, max_retries=3):
 
 # 示例数组
 urls = [
-    "https://www.amazon.com/dp/B01N4KYKNY/ref=mweb_up_am_fl_st_na_un_up_sm_vs_lns",
-    # "https://www.amazon.com/Hanpceirs-Sundress-Vintage-Cocktail-Dresses/dp/B0CSMMDNR1/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.Altj2qxxKNbsGuhRkwcpP8-3EA_PJaVAF-WWm4-7gRM.W61XUPguLEgCe7DlpzL8ecOKY5SWQvdY_a9ydNHZf04&dib_tag=se&keywords=%E5%A4%8F%E5%A4%A9%E8%BF%9E%E8%A1%A3%E8%A3%99&qid=1719157467&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"
+     "https://www.amazon.com/dp/B08PZJN7BD?aref=N1GKbwWP6d&aaxitk=5f4a4fd0be1fd3eab1809bed4201e3ed&language=en_US&pd_rd_plhdr=t&smid=ATVPDKIKX0DER&ref=dacx_dp_591637243630818197_582668263125716884"
     # 添加更多URL
 ]
 
 driver = webdriver.Chrome()
+signin.signin(driver)
+#
 # 遍历数组并调用函数
 for url in urls:
-
-    product_details = fetch_amazon_product_details(url, max_retries=2)
+    product_details = fetch_amazon_product_details(driver, url, max_retries=2)
     if product_details:
         print(product_details)
     else:
         print(f"无法获取 {url} 的产品详情")
-
