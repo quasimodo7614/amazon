@@ -28,7 +28,8 @@ def fetch_amazon_product_details(driver, url, max_retries=3):
             # print("title is: ", title)
 
             price = driver.find_element(By.CLASS_NAME, 'a-price-whole').text.strip()
-            # print("price is: ", price)
+            if price == "":
+                price = driver.find_element(By.XPATH, '//*[@id="corePrice_desktop"]/div/table/tbody/tr/td[2]/span[1]/span[2]').text.strip()
 
             # fiveitem
             try:
@@ -93,15 +94,16 @@ def fetch_amazon_product_details(driver, url, max_retries=3):
             if attempt == max_retries - 1:
                 print("多次尝试后仍然失败，退出程序。")
                 return None
-
+#
 # # 示例数组
 # urls = [
-#      "https://www.amazon.com/dp/B08PZJN7BD?aref=N1GKbwWP6d&aaxitk=5f4a4fd0be1fd3eab1809bed4201e3ed&language=en_US&pd_rd_plhdr=t&smid=ATVPDKIKX0DER&ref=dacx_dp_591637243630818197_582668263125716884"
+#      # "https://www.amazon.com/dp/B08PZJN7BD?aref=N1GKbwWP6d&aaxitk=5f4a4fd0be1fd3eab1809bed4201e3ed&language=en_US&pd_rd_plhdr=t&smid=ATVPDKIKX0DER&ref=dacx_dp_591637243630818197_582668263125716884"
 #     # 添加更多URL
+#      "https://www.amazon.com/-/zh/dp/B07RV58W46/ref=sr_1_3?dib=eyJ2IjoiMSJ9.5yEcZQrh3Y7jYmCgksul88jsV2dnGhHyXM-JZfqxozId_GXJgkBfcZ9cuc9mk5cOoUFjIJ96w-hhCEbjJhWGMUCGm5-XxP2ID3fvrhwjF2UnkEwe7a9VCVtedGcKSi-mMC7-n0ihqVgEYB2NND7-p7720pZxSuKCKQ4ICkiVUzg8ci5_erCy6PybmlC1Q7rHr_ZMAVV2AD8eaESvQtHDlzhW7UxXU7YRX0iTL74mhL8.qoLIixEgW9i8bvDkfJQ1ff8tvl3i920XxMDAJL2EKoc&dib_tag=se&keywords=iphone&qid=1719504369&sr=8-3"
 # ]
 #
 # driver = webdriver.Chrome()
-# signin.signin(driver)
+# # signin.signin(driver)
 # #
 # # 遍历数组并调用函数
 # for url in urls:
